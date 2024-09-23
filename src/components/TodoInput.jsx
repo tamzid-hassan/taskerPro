@@ -1,13 +1,20 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
+import { useTodoContext } from "../contexts/TodoContext"
 
 function TodoInput() {
 
     const [inputText, setInputText] = useState("")
+    const { addTodo } = useTodoContext();
 
     const handleForm = (e) => {
         e.preventDefault();
 
+        if (!inputText) return
+
+        addTodo({ task: inputText, isCompleted: false })
+
+        setInputText("")
     }
 
     return (
@@ -29,7 +36,7 @@ function TodoInput() {
                         x: 25,
                     }}
                     transition={{
-                        duration: 0.2,
+                        duration: 0.125,
                         type: "spring",
                         damping: 8
 
