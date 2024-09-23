@@ -1,9 +1,11 @@
 import { motion } from "framer-motion"
+import { TodoContextProvider } from "./contexts/todoContext"
+
 
 function App() {
 
   return (
-    <>
+    <TodoContextProvider>
       <h1 className='text-3xl font-bold text-secondary'>Test</h1>
       <motion.button
         whileHover={{
@@ -15,7 +17,7 @@ function App() {
           scale: 0.9
         }}
         className="btn btn-primary ">Button</motion.button>
-    </>
+    </TodoContextProvider>
   )
 }
 
