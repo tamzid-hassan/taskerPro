@@ -1,4 +1,4 @@
-import { TodoContextProvider } from "./contexts/todoContext"
+import { TodoContextProvider } from "./contexts/TodoContext.js"
 import Header from "./components/Header"
 import TodoInput from "./components/TodoInput"
 import Todo from "./components/Todo"
