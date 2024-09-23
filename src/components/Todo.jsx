@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion"
-import { useTodoContext } from "../contexts/todoContext"
+import { useTodoContext } from "../contexts/TodoContext.js"
 
 function Todo({ todo }) {
     const { toggleCompleted, deleteTodo } = useTodoContext()
