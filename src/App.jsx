@@ -3,7 +3,8 @@ import Header from "./components/Header"
 import TodoInput from "./components/TodoInput"
 import Todo from "./components/Todo"
 import { useEffect, useState } from "react"
-
+import { ToastContainer, toast, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -20,10 +21,28 @@ function App() {
 
   const deleteTodo = (id) => {
     setTodos(prevTodos => prevTodos.filter(prevTodo => prevTodo.id !== id))
+    toast.error('Task Deleted', {
+      position: "bottom-right",
+      autoClose: 2000,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "colored",
+      transition: Zoom,
+    });
   }
 
   const updateTodo = (id, updatedTodo) => {
     setTodos(prevTodos => prevTodos.map(prevTodo => prevTodo.id === id ? { ...prevTodo, task: updatedTodo.task } : prevTodo))
+
+    toast.info('Task Updated', {
+      position: "bottom-right",
+      autoClose: 2000,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      transition: Zoom,
+    });
   }
 
 
@@ -45,6 +64,7 @@ function App() {
       {todos && todos.map(todo => (
         <Todo key={todo.id} todo={todo} />
       ))}
+      <ToastContainer />
     </TodoContextProvider>
   )
 }

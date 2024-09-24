@@ -7,6 +7,7 @@ function ThemeSwitcher() {
     const toggleTheme = () => {
         if (currentTheme === "") return setCurrentTheme("taskerProDark")
 
+
         setCurrentTheme(prev => prev === "taskerProLight" ? "taskerProDark" : "taskerProLight")
     }
 
@@ -16,7 +17,6 @@ function ThemeSwitcher() {
         if (localTheme && localTheme.length > 0) {
             setCurrentTheme(localTheme)
         }
-
 
     }, [])
 

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useTodoContext } from "../contexts/TodoContext";
 import { motion } from "framer-motion";
+import { toast } from 'react-toastify';
 
 function TodoEditor({ todo, setIsModalVisible }) {
 
@@ -31,6 +32,7 @@ function TodoEditor({ todo, setIsModalVisible }) {
         >
             <form onSubmit={handleEditForm} className="flex flex-col items-center justify-center w-full gap-4 p-4 join">
                 <input
+                    maxLength="35"
                     type="text"
                     placeholder="Type to Edit..."
                     value={editorInputText}
