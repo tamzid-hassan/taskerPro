@@ -24,7 +24,7 @@ function TodoInput() {
                     type="text"
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
-                    placeholder="Type here"
+                    placeholder="ADD YOUR TASKS..."
                     className="w-full max-w-md pl-4 bg-base-100 text-base-content join-item ring-1 ring-inset ring-neutral-content focus:outline-none focus:ring-2 focus:ring-primary"
                 />
 
