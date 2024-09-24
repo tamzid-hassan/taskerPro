@@ -64,7 +64,7 @@ function App() {
       {todos && todos.map(todo => (
         <Todo key={todo.id} todo={todo} />
       ))}
-      <ToastContainer />
+      <ToastContainer className="w-1/2 ml-auto md:w-[20%]" />
     </TodoContextProvider>
   )
 }
