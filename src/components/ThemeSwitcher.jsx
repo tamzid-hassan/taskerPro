@@ -1,11 +1,35 @@
+import { useEffect, useState } from "react"
 
 function ThemeSwitcher() {
+
+    const [currentTheme, setCurrentTheme] = useState("")
+
+    const toggleTheme = () => {
+        if (currentTheme === "") return setCurrentTheme("taskerProDark")
+
+        setCurrentTheme(prev => prev === "taskerProLight" ? "taskerProDark" : "taskerProLight")
+    }
+
+    useEffect(() => {
+        const localTheme = JSON.parse(localStorage.getItem("localTheme"))
+
+        if (localTheme && localTheme.length > 0) {
+            setCurrentTheme(localTheme)
+        }
+
+
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem("localTheme", JSON.stringify(currentTheme))
+
+    }, [currentTheme])
 
     return (
         <>
             <label className="swap swap-rotate">
                 {/* this hidden checkbox controls the state */}
-                <input type="checkbox" className="theme-controller" value="taskerProDark" />
+                <input type="checkbox" onChange={toggleTheme} checked={currentTheme === "taskerProDark" ? true : false} className="theme-controller" value={currentTheme} />
 
                 {/* sun icon */}
                 <svg
