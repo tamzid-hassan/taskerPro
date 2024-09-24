@@ -36,17 +36,17 @@ function TodoEditor({ todo, setIsModalVisible }) {
                     value={editorInputText}
                     onChange={(e) => setEditorInputText(e.target.value)}
                     className="w-full max-w-lg input input-bordered" />
-                <div className="pr-4 space-x-5">
-                    <button type="submit" className="w-32 btn btn-accent">
+                <div className="pr-4 space-x-2 lg:space-x-5">
+                    <button type="submit" className="lg:w-32 btn btn-accent">
                         <i className="font-thin fa-regular fa-floppy-disk"></i>
                         Update
                     </button>
                     <button onClick={(e) => {
                         e.preventDefault()
                         setIsModalVisible(prev => !prev)
-                    }} className="w-32 btn btn-error">
+                    }} className="lg:w-32 btn btn-error">
                         <i className="fa-solid fa-xmark"></i>
-                        decline
+                        Discard
                     </button>
                 </div>
             </form>
