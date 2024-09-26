@@ -66,9 +66,11 @@ function App() {
     <TodoContextProvider value={{ addTodo, toggleCompleted, deleteTodo, updateTodo }}>
       <Header />
       <TodoInput />
-      {todos && todos.map(todo => (
-        <Todo key={todo.id} todo={todo} />
-      ))}
+      <AnimatePresence>
+        {todos && todos.map(todo => (
+          <Todo key={todo.id} todo={todo} />
+        ))}
+      </AnimatePresence>
       <ToastContainer className="w-1/2 mb-10 text-sm ml-auto  sm:text-base md:w-[20%]" />
     </TodoContextProvider>
   )
