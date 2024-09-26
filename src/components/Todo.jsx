@@ -10,15 +10,19 @@ function Todo({ todo }) {
     // console.log(isModalVisible)
 
     return (
-        <AnimatePresence>
+        <>
             <motion.div
                 initial={{
-                    x: 0,
+                    opacity: 0,
                     y: -20
                 }}
                 animate={{
-                    x: 0,
+                    opacity: 1,
                     y: 0,
+                }}
+                exit={{
+                    opacity: 0,
+                    x: 30,
                 }}
                 transition={{
                     duration: .5,
@@ -38,13 +42,14 @@ function Todo({ todo }) {
                     <button onClick={() => deleteTodo(todo.id)}><i className="transition-all duration-200 fa-solid fa-trash-can text-accent-content hover:text-red-500 active:text-sm active:text-red-700"></i></button>
                 </div>
             </motion.div>
-            <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-40 w-3/4 card bg-neutral text-accent-content" key={todo.id}>
 
+            <AnimatePresence>
                 {isModalVisible &&
-                    (<TodoEditor todo={todo} setIsModalVisible={setIsModalVisible} />
-                    )}
-            </div>
-        </AnimatePresence>
+                    (<TodoEditor key={todo.id} todo={todo} setIsModalVisible={setIsModalVisible} />)
+                }
+            </AnimatePresence>
+
+        </>
     )
 }
 

@@ -2,9 +2,10 @@ import { TodoContextProvider } from "./contexts/TodoContext.js"
 import Header from "./components/Header"
 import TodoInput from "./components/TodoInput"
 import Todo from "./components/Todo"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { ToastContainer, toast, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AnimatePresence } from "framer-motion"
 
 function App() {
 
@@ -23,12 +24,13 @@ function App() {
     setTodos(prevTodos => prevTodos.filter(prevTodo => prevTodo.id !== id))
     toast.error('Task Deleted', {
       position: "bottom-right",
-      autoClose: 2000,
+      autoClose: 1500,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      theme: "colored",
+      // theme: "colored",
       transition: Zoom,
+      hideProgressBar: true
     });
   }
 
@@ -37,21 +39,24 @@ function App() {
 
     toast.info('Task Updated', {
       position: "bottom-right",
-      autoClose: 2000,
+      autoClose: 1500,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
       transition: Zoom,
+      hideProgressBar: true
+
     });
   }
-
 
   useEffect(() => {
     const localSotrageTodos = JSON.parse(localStorage.getItem("todos"))
 
     if (localSotrageTodos && localSotrageTodos.length > 0) setTodos(localSotrageTodos)
 
-  }, [])
+
+    console.log("asdasdsd")
+  }, [setTodos])
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos))
@@ -64,7 +69,7 @@ function App() {
       {todos && todos.map(todo => (
         <Todo key={todo.id} todo={todo} />
       ))}
-      <ToastContainer className="w-1/2 ml-auto md:w-[20%]" />
+      <ToastContainer className="w-1/2 mb-10 text-sm ml-auto  sm:text-base md:w-[20%]" />
     </TodoContextProvider>
   )
 }

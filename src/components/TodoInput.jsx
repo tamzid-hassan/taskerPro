@@ -11,16 +11,17 @@ function TodoInput() {
     const { addTodo } = useTodoContext();
 
     const handleInputChange = (e) => {
-        if (e.target.value.length === 35) {
+        if (e.target.value.length === 30) {
 
 
-            toast.error('Task length max 30 character', {
+            toast.error('Max length 30 character', {
                 position: "bottom-right",
-                autoClose: 2000,
+                autoClose: 1500,
                 closeOnClick: true,
                 pauseOnHover: true,
                 draggable: true,
                 transition: Zoom,
+                hideProgressBar: true
             });
         }
 
