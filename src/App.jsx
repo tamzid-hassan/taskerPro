@@ -2,7 +2,7 @@ import { TodoContextProvider } from "./contexts/TodoContext.js"
 import Header from "./components/Header"
 import TodoInput from "./components/TodoInput"
 import Todo from "./components/Todo"
-import { useCallback, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { ToastContainer, toast, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AnimatePresence } from "framer-motion"
@@ -55,7 +55,6 @@ function App() {
     if (localSotrageTodos && localSotrageTodos.length > 0) setTodos(localSotrageTodos)
 
 
-    console.log("asdasdsd")
   }, [setTodos])
 
   useEffect(() => {
